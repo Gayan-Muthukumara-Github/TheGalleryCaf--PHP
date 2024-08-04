@@ -20,9 +20,11 @@ if(isset($_POST['update'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
+   $cousin_type = $_POST['cousin_type'];
+   $cousin_type = filter_var($cousin_type, FILTER_SANITIZE_STRING);
 
-   $update_product = $conn->prepare("UPDATE `products` SET name = ?, category = ?, price = ? WHERE id = ?");
-   $update_product->execute([$name, $category, $price, $pid]);
+   $update_product = $conn->prepare("UPDATE `products` SET name = ?, category = ?, cousin_type = ?, price = ? WHERE id = ?");
+   $update_product->execute([$name, $category, $cousin_type, $price, $pid]);
 
    $message[] = 'product updated!';
 
@@ -96,6 +98,13 @@ if(isset($_POST['update'])){
          <option value="fast food">fast food</option>
          <option value="drinks">drinks</option>
          <option value="desserts">desserts</option>
+      </select>
+      <select name="cousin_type" class="box" required>
+      <option selected value="<?= $fetch_products['cousin_type']; ?>"><?= $fetch_products['cousin_type']; ?></option>
+         <option value="sri lanka">Sri Lanka</option>
+         <option value="indian">Indian</option>
+         <option value="chinies">Chinies</option>
+         <option value="japanies">Japanies</option>
       </select>
       <span>update image</span>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp">

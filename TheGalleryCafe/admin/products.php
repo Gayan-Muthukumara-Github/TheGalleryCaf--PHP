@@ -18,6 +18,8 @@ if(isset($_POST['add_product'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
+   $cousin_type = $_POST['cousin_type'];
+   $cousin_type = filter_var($cousin_type, FILTER_SANITIZE_STRING);
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
@@ -36,8 +38,8 @@ if(isset($_POST['add_product'])){
       }else{
          move_uploaded_file($image_tmp_name, $image_folder);
 
-         $insert_product = $conn->prepare("INSERT INTO `products`(name, category, price, image) VALUES(?,?,?,?)");
-         $insert_product->execute([$name, $category, $price, $image]);
+         $insert_product = $conn->prepare("INSERT INTO `products`(name, category, cousin_type, price, image) VALUES(?,?,?,?,?)");
+         $insert_product->execute([$name, $category, $cousin_type, $price, $image]);
 
          $message[] = 'new product added!';
       }
@@ -97,6 +99,13 @@ if(isset($_GET['delete'])){
          <option value="drinks">drinks</option>
          <option value="desserts">desserts</option>
       </select>
+      <select name="cousin_type" class="box" required>
+         <option value="" disabled selected>select Cousin Type	--</option>
+         <option value="sri lanka">Sri Lanka</option>
+         <option value="indian">Indian</option>
+         <option value="chinies">Chinies</option>
+         <option value="japanies">Japanies</option>
+      </select>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp" required>
       <input type="submit" value="add product" name="add_product" class="btn">
    </form>
@@ -121,7 +130,7 @@ if(isset($_GET['delete'])){
       <img src="../uploaded_img/<?= $fetch_products['image']; ?>" alt="">
       <div class="flex">
          <div class="price"><span>$</span><?= $fetch_products['price']; ?><span>/-</span></div>
-         <div class="category"><?= $fetch_products['category']; ?></div>
+         <div class="category"><?= $fetch_products['cousin_type']; ?>-<?= $fetch_products['category']; ?></div>
       </div>
       <div class="name"><?= $fetch_products['name']; ?></div>
       <div class="flex-btn">

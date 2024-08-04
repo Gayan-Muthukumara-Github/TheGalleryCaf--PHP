@@ -20,7 +20,7 @@ include 'components/add_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>menu</title>
+   <title>cousin type</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -31,47 +31,18 @@ include 'components/add_cart.php';
 </head>
 <body>
    
-<!-- header section starts  -->
 <?php include 'components/user_header.php'; ?>
-<!-- header section ends -->
-
-<div class="heading">
-   <h3>our menu</h3>
-   <p><a href="home.php">home</a> <span> / menu</span></p>
-</div>
-
-<!-- menu section starts  -->
 
 <section class="products">
 
-   <h1 class="title">latest dishes</h1>
-   <div class="form-container" style="margin-bottom:15px;">
-      <div class="flex">
-         <form action="" method="post">
-            <select name="cousin_type" class="box" required>
-               <option value="" disabled selected>Filter by Cousin Type</option>
-               <option value="sri lanka">Sri Lanka</option>
-               <option value="indian">Indian</option>
-               <option value="chinies">Chinies</option>
-               <option value="japanies">Japanies</option>
-            </select>
-            <input type="submit" value="Filter" name="submit" class="btn">
-         </form>
-      </div>
-   </div>
+   <h1 class="title">food cousin type</h1>
+
    <div class="box-container">
 
       <?php
-         if (isset($_POST['submit']) && !empty($_POST['cousin_type'])) {
-            $cousin_type = $_POST['cousin_type'];
-            $cousin_type = filter_var($cousin_type, FILTER_SANITIZE_STRING);
-            $select_products = $conn->prepare("SELECT * FROM `products` WHERE cousin_type = ?");
-            $select_products->execute([$cousin_type]);
-         } else {
-            $select_products = $conn->prepare("SELECT * FROM `products`");
-            $select_products->execute();
-         }
-
+         $cousin_type = $_GET['cousin_type'];
+         $select_products = $conn->prepare("SELECT * FROM `products` WHERE cousin_type = ?");
+         $select_products->execute([$cousin_type]);
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
       ?>
@@ -83,10 +54,6 @@ include 'components/add_cart.php';
          <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
          <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
          <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-         <div class="flex">
-            <a href="cousin_type.php?cousin_type=<?= $fetch_products['cousin_type']; ?>" class="cat"><?= $fetch_products['cousin_type']; ?></a>
-         </div>
-         <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
          <div class="name"><?= $fetch_products['name']; ?></div>
          <div class="flex">
             <div class="price"><span>$</span><?= $fetch_products['price']; ?></div>
@@ -96,7 +63,7 @@ include 'components/add_cart.php';
       <?php
             }
          }else{
-            echo '<p class="empty">no products found for this cousin type!</p>';
+            echo '<p class="empty">no products added yet!</p>';
          }
       ?>
 
@@ -104,14 +71,30 @@ include 'components/add_cart.php';
 
 </section>
 
-<!-- menu section ends -->
 
-<!-- footer section starts  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php include 'components/footer.php'; ?>
-<!-- footer section ends -->
+
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
+
 
 </body>
 </html>

@@ -20,7 +20,9 @@ if(isset($message)){
       <nav class="navbar">
          <a href="dashboard.php">home</a>
          <a href="products.php">products</a>
+         <a href="table.php">tables</a>
          <a href="placed_orders.php">orders</a>
+         <a href="reserved_tables.php">reservation</a>
          <a href="admin_accounts.php">admins</a>
          <a href="users_accounts.php">users</a>
          <a href="messages.php">messages</a>
