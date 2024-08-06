@@ -40,6 +40,7 @@ if(isset($_POST['submit'])){
          $row = $select_user->fetch(PDO::FETCH_ASSOC);
          if($select_user->rowCount() > 0){
             $_SESSION['user_id'] = $row['id'];
+            $message[] = 'User registration Successfully!';
             header('location:home.php');
          }
       }

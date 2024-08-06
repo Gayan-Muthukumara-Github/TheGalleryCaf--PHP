@@ -822,80 +822,105 @@ section{
    color:var(--black);
 }
 
-.checkout form{
+.checkout form {
    max-width: 50rem;
-   margin:0 auto;
-   border:var(--border);
-   padding:2rem;
+   margin: 0 auto;
+   border: 1px solid var(--light-border);
+   border-radius: 0.5rem;
+   padding: 2rem;
+   background-color: var(--white);
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.checkout form h3{
-   font-size: 2.5rem;
+.checkout form h3 {
+   font-size: 2.4rem;
    text-transform: capitalize;
-   padding: 2rem 0;
-   color:var(--black);
+   color: var(--dark-gray);
+   padding-bottom: 1.5rem;
+   border-bottom: 1px solid var(--light-border);
+   margin-bottom: 2rem;
 }
 
-.checkout form .cart-items{
-   background-color: var(--black);
-   padding:2rem;
+.checkout form .cart-items {
+   background-color: var(--faint-gray);
+   border-radius: 0.5rem;
+   padding: 2rem;
    padding-top: 0;
+   border: 1px solid var(--light-border);
 }
 
-.checkout form .cart-items h3{
-   color:var(--white);
+.checkout form .cart-items h3 {
+   color: var(--dark-gray);
+   margin-bottom: 1.5rem;
+   font-size: 2rem;
+   font-weight: 500;
 }
 
-.checkout form .cart-items p{
+.checkout form .cart-items p {
    display: flex;
    align-items: center;
-   gap:1.5rem;
+   gap: 1.5rem;
    justify-content: space-between;
-   margin:1rem 0;
-   line-height: 1.5;
-   font-size: 2rem;
+   margin: 1rem 0;
+   font-size: 1.8rem;
+   color: var(--dark-gray);
+   border-bottom: 1px solid var(--light-border);
+   padding-bottom: 1rem;
 }
 
-.checkout form .cart-items p .name{
-   color:var(--light-color);
+.checkout form .cart-items p .name {
+   color: var(--medium-gray);
 }
 
-.checkout form .cart-items p .price{
-   color:var(--yellow);
+.checkout form .cart-items p .price {
+   color: var(--blue);
+   font-weight: 600;
 }
 
-.checkout form .cart-items .grand-total{
+.checkout form .cart-items .grand-total {
    background-color: var(--white);
-   padding:.5rem 1.5rem;
+   border-radius: 0.5rem;
+   padding: 1rem;
+   margin-top: 2rem;
+   border: 1px solid var(--light-border);
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.checkout form .cart-items .grand-total .price{
-   color:var(--red);
+.checkout form .cart-items .grand-total .price {
+   color: var(--red);
+   font-size: 2.2rem;
+   font-weight: 700;
 }
 
-.checkout form .user-info p{ 
-   font-size: 2rem;
+.checkout form .user-info p {
+   font-size: 1.8rem;
    line-height: 1.5;
-   padding:1rem 0;
+   padding: 1rem 0;
+   color: var(--dark-gray);
+   border-bottom: 1px solid var(--light-border);
+   margin-bottom: 1rem;
 }
 
-.checkout form .user-info p i{
-   color:var(--light-color);
+.checkout form .user-info p i {
+   color: var(--medium-gray);
    margin-right: 1rem;
 }
 
-.checkout form .user-info p span{
-   color:var(--black);
+.checkout form .user-info p span {
+   color: var(--black);
 }
 
-.checkout form .user-info .box{
+.checkout form .user-info .box {
    width: 100%;
-   border:var(--border);
-   padding:1.4rem;
-   margin-top: 2rem;
-   margin-bottom: 1rem;
+   border: 1px solid var(--light-border);
+   border-radius: 0.5rem;
+   padding: 1.4rem;
+   margin-top: 1rem;
    font-size: 1.8rem;
+   background-color: var(--faint-gray);
 }
+
+
 
 .orders .box-container{
    display: flex;
