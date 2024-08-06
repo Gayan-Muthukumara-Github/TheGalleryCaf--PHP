@@ -32,7 +32,8 @@ include 'components/add_cart.php';
 <body>
    
 <!-- header section starts  -->
-<?php include 'components/user_header.php'; ?>
+<?php include 'components/navbar.php'; ?>
+<?php include 'components/navlinks.php'; ?>
 <!-- header section ends -->
 
 <!-- search form section starts  -->

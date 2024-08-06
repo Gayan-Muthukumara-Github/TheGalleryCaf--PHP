@@ -15,14 +15,18 @@ if(isset($_POST['submit'])){
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
 
+   $admin_type = $_POST['admin_type'];
+   $admin_type = filter_var($admin_type, FILTER_SANITIZE_STRING);
+
    if(!empty($name)){
       $select_name = $conn->prepare("SELECT * FROM `admin` WHERE name = ?");
       $select_name->execute([$name]);
       if($select_name->rowCount() > 0){
          $message[] = 'username already taken!';
       }else{
-         $update_name = $conn->prepare("UPDATE `admin` SET name = ? WHERE id = ?");
-         $update_name->execute([$name, $admin_id]);
+         $update_name = $conn->prepare("UPDATE `admin` SET name = ?, admin_type = ? WHERE id = ?");
+         $update_name->execute([$name, $admin_type, $admin_id]);
+         $message[] = 'Profile updated successfully!';
       }
    }
 
@@ -87,6 +91,11 @@ if(isset($_POST['submit'])){
       <input type="password" name="old_pass" maxlength="20" placeholder="enter your old password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="new_pass" maxlength="20" placeholder="enter your new password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="confirm_pass" maxlength="20" placeholder="confirm your new password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <select name="admin_type" class="box">
+      <option value="" disabled>Select Admin Type</option>
+      <option value="Admin" <?= ($fetch_profile['type'] === 'Admin') ? 'selected' : '' ?>>Admin</option>
+      <option value="Operational Staff" <?= ($fetch_profile['type'] === 'Operational Staff') ? 'selected' : '' ?>>Operational Staff</option>
+   </select>
       <input type="submit" value="update now" name="submit" class="btn">
    </form>
 

@@ -57,7 +57,8 @@ if(isset($_POST['send'])){
 <body>
    
 <!-- header section starts  -->
-<?php include 'components/user_header.php'; ?>
+<?php include 'components/navbar.php'; ?>
+<?php include 'components/navlinks.php'; ?>
 <!-- header section ends -->
 
 <div class="heading">
@@ -72,7 +73,7 @@ if(isset($_POST['send'])){
    <div class="row">
 
       <div class="image">
-         <img src="images/contact-img.svg" alt="">
+      <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
 
       <form action="" method="post">

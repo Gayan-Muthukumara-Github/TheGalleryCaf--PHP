@@ -9,15 +9,42 @@ if(isset($message)){
       ';
    }
 }
+
+$admin_id = $_SESSION['admin_id'];
+$select_admin = $conn->prepare("SELECT type FROM `admin` WHERE id = ?");
+$select_admin->execute([$admin_id]);
+$fetch_admin = $select_admin->fetch(PDO::FETCH_ASSOC);
+$admin_type = $fetch_admin['type'];
 ?>
 
 <header class="header">
 
    <section class="flex">
-
-      <a href="dashboard.php" class="logo">Admin<span>Panel</span></a>
+         <?php 
+         if ($admin_type === 'Operational Staff') 
+            { 
+         ?>
+            <a href="staff_dashboard.php" class="logo">Operational Staff<span> Panel</span></a>
+         <?php 
+            } else{
+         ?>
+            <a href="dashboard.php" class="logo">Admin<span> Panel</span></a>
+         <?php 
+            } 
+         ?>
 
       <nav class="navbar">
+         
+         <?php 
+         if ($admin_type === 'Operational Staff') 
+            { 
+         ?>
+            <a href="staff_dashboard.php">home</a>
+            <a href="staff_placed_orders.php">orders</a>
+            <a href="staff_reserved_tables.php">reservation</a>
+         <?php 
+            } else{
+         ?>
          <a href="dashboard.php">home</a>
          <a href="products.php">products</a>
          <a href="table.php">tables</a>
@@ -26,6 +53,9 @@ if(isset($message)){
          <a href="admin_accounts.php">admins</a>
          <a href="users_accounts.php">users</a>
          <a href="messages.php">messages</a>
+         <?php 
+            } 
+         ?>
       </nav>
 
       <div class="icons">

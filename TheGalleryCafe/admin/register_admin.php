@@ -18,19 +18,21 @@ if(isset($_POST['submit'])){
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
    $cpass = sha1($_POST['cpass']);
    $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+   $admin_type = $_POST['admin_type'];
+   $admin_type = filter_var($admin_type, FILTER_SANITIZE_STRING);
 
    $select_admin = $conn->prepare("SELECT * FROM `admin` WHERE name = ?");
    $select_admin->execute([$name]);
    
    if($select_admin->rowCount() > 0){
       $message[] = 'username already exists!';
-   }else{
-      if($pass != $cpass){
-         $message[] = 'confirm passowrd not matched!';
-      }else{
-         $insert_admin = $conn->prepare("INSERT INTO `admin`(name, password) VALUES(?,?)");
-         $insert_admin->execute([$name, $cpass]);
-         $message[] = 'new admin registered!';
+   }else {
+      if ($pass != $cpass) {
+         $message[] = 'Confirm password does not match!';
+      } else {
+         $insert_admin = $conn->prepare("INSERT INTO `admin` (name, password, type) VALUES (?, ?, ?)");
+         $insert_admin->execute([$name, $cpass, $admin_type]);
+         $message[] = 'New admin registered!';
       }
    }
 
@@ -66,6 +68,11 @@ if(isset($_POST['submit'])){
       <input type="text" name="name" maxlength="20" required placeholder="enter your username" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="pass" maxlength="20" required placeholder="enter your password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="cpass" maxlength="20" required placeholder="confirm your password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <select name="admin_type" required class="box">
+      <option value="" disabled selected>Select Admin Type</option>
+      <option value="Admin">Admin</option>
+      <option value="Operational Staff">Operational Staff</option>
+   </select>
       <input type="submit" value="register now" name="submit" class="btn">
    </form>
 

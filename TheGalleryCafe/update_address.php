@@ -42,7 +42,8 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<?php include 'components/user_header.php' ?>
+<?php include 'components/navbar.php' ?>
+<?php include 'components/navlinks.php'; ?>
 
 <section class="form-container">
 

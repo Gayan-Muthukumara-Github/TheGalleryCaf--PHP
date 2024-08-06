@@ -33,9 +33,8 @@ include 'components/add_cart.php';
 </head>
 <body>
 
-<?php include 'components/user_header.php'; ?>
-
-
+<?php include 'components/navbar.php'; ?>
+<?php include 'components/navlinks.php'; ?>
 
 <section class="hero">
 
@@ -44,38 +43,16 @@ include 'components/add_cart.php';
       <div class="swiper-wrapper">
 
          <div class="swiper-slide slide">
-            <div class="content">
-               <span>order online</span>
-               <h3>delicious pizza</h3>
-               <a href="menu.php" class="btn">see menus</a>
-            </div>
             <div class="image">
                <img src="images/home-img-1.png" alt="">
             </div>
          </div>
 
          <div class="swiper-slide slide">
-            <div class="content">
-               <span>order online</span>
-               <h3>chezzy hamburger</h3>
-               <a href="menu.php" class="btn">see menus</a>
-            </div>
             <div class="image">
                <img src="images/home-img-2.png" alt="">
             </div>
          </div>
-
-         <div class="swiper-slide slide">
-            <div class="content">
-               <span>order online</span>
-               <h3>rosted chicken</h3>
-               <a href="menu.php" class="btn">see menus</a>
-            </div>
-            <div class="image">
-               <img src="images/home-img-3.png" alt="">
-            </div>
-         </div>
-
       </div>
 
       <div class="swiper-pagination"></div>
@@ -86,7 +63,7 @@ include 'components/add_cart.php';
 
 <section class="category">
 
-   <h1 class="title">food category</h1>
+   <h1 class="title">Our Menu</h1>
 
    <div class="box-container">
 
@@ -119,7 +96,7 @@ include 'components/add_cart.php';
 
 <section class="products">
 
-   <h1 class="title">latest dishes</h1>
+   <h1 class="title">Top Orders</h1>
 
    <div class="box-container">
 
